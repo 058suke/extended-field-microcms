@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "md-editor-rt": "^4.8.2",
     "microcms-field-extension-api": "^1.0.0",
     "microcms-field-extension-react": "^1.0.0",
     "next": "14.0.0",
