@@ -6,7 +6,7 @@ import 'md-editor-rt/lib/style.css';
 const App = () => {
   const [markdown, setMarkdown] = useState('');
   const { data, sendMessage } = useFieldExtension('', {
-    origin: "https://example.microcms.io",
+    origin: process.env.MICROCMS_ORIGIN_URL,
     height: 540,
   });
 
