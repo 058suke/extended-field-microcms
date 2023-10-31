@@ -7,7 +7,7 @@ const App = () => {
   const [markdown, setMarkdown] = useState('');
   const { data, sendMessage } = useFieldExtension('', {
     origin: process.env.NEXT_PUBLIC_MICROCMS_ORIGIN_URL,
-    height: 540,
+    height: 800,
   });
 
   useEffect(() => {
@@ -16,11 +16,16 @@ const App = () => {
     }
   }, [data, markdown])
 
+  useEffect(() => {
+    postMessage({ data: markdown })
+  }, [markdown, sendMessage])
+
   return (
     <MdEditor 
       modelValue={markdown} 
       onChange={setMarkdown}
       language="en-US"
+      style={{ height: 800 }}
     />
   );
 }
