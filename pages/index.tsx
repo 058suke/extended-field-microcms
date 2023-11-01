@@ -12,7 +12,7 @@ const Page = () => {
   const [markdown, setMarkdown] = useState<string>('')
 
   const { data, sendMessage } = useFieldExtension('', {
-    origin: process.env.NEXT_PUBLIC_MICROCMS_ORIGIN,
+    origin: process.env.NEXT_PUBLIC_MICROCMS_ORIGIN_URL,
     height: 600,
   })
 
