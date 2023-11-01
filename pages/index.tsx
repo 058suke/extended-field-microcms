@@ -1,33 +1,41 @@
-import React, { useEffect, useState } from 'react';
+// common
+import { useEffect, useState } from 'react'
+
+// package
 import { useFieldExtension } from 'microcms-field-extension-react'
-import { MdEditor } from 'md-editor-rt';
-import 'md-editor-rt/lib/style.css';
+import { MdEditor } from 'md-editor-rt'
 
-const App = () => {
-  const [markdown, setMarkdown] = useState('');
+// styles
+import 'md-editor-rt/lib/style.css'
+
+const Page = () => {
+  const [markdown, setMarkdown] = useState<string>('')
+
   const { data, sendMessage } = useFieldExtension('', {
-    origin: process.env.NEXT_PUBLIC_MICROCMS_ORIGIN_URL,
-    height: 800,
-  });
+    origin: process.env.NEXT_PUBLIC_MICROCMS_ORIGIN,
+    height: 600,
+  })
 
   useEffect(() => {
-    if (!markdown) {
-      setMarkdown(data);
+    if (data) {
+      setMarkdown(data)
     }
-  }, [data, markdown])
+  }, [data])
 
   useEffect(() => {
-    postMessage({ data: markdown })
+    sendMessage({ data: markdown })
   }, [markdown, sendMessage])
 
   return (
-    <MdEditor 
-      modelValue={markdown} 
-      onChange={setMarkdown}
-      language="en-US"
-      style={{ height: 800 }}
-    />
-  );
+    <div data-color-mode="light">
+      <MdEditor
+        modelValue={markdown}
+        onChange={(value) => setMarkdown(value)}
+        language="en-US"
+        style={{ height: 600 }}
+      />
+    </div>
+  )
 }
 
-export default App;
+export default Page
